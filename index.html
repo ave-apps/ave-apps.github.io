@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ave-apps — Albert van Esveld</title>
+<meta name="description" content="Digitale hulpmiddelen voor zorgteams. Gebouwd door iemand die het werk kent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-muted: #8a8a84;
+    --paper: #f5f3ee;
+    --paper-warm: #ede9e0;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --rule: rgba(26,26,24,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── layout ── */
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ── header ── */
+  header {
+    padding: 2.5rem 0 0;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .logo {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+  .header-note {
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── hero ── */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-kicker {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink-mid);
+  }
+  .hero-deck {
+    font-size: 17px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* ── section ── */
+  section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* ── three-col cards ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .card {
+    background: var(--paper);
+    padding: 1.5rem;
+  }
+  .card-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--paper-warm);
+    margin-bottom: 0.75rem;
+    line-height: 1;
+    user-select: none;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .card p {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── apps list ── */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+  .app-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .app-item:nth-child(odd):last-child { grid-column: span 2; }
+  .app-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .app-desc {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+  .apps-note {
+    margin-top: 1rem;
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  /* ── quote ── */
+  .quote-section { padding: 4rem 0; }
+  blockquote {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.8vw, 24px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 600px;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* ── voor wie ── */
+  .voor-wie {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 520px) { .voor-wie { grid-template-columns: 1fr; } }
+  .vw-item h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .vw-item p {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── contact ── */
+  .contact-section { padding: 3.5rem 0 4rem; border-bottom: none; }
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 14px;
+  }
+  .contact-icon {
+    width: 28px; height: 28px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    background: var(--paper-warm);
+  }
+  .contact-icon svg { width: 14px; height: 14px; fill: var(--ink-mid); }
+  .contact-row a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .contact-row a:hover { text-decoration: underline; }
+  .contact-row span { color: var(--ink-mid); font-weight: 300; }
+
+  /* ── footer ── */
+  footer {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer-inner p { font-size: 11px; color: var(--ink-muted); }
+
+  /* ── fade in ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1   { animation: fadeUp 0.6s ease both; }
+  .hero-deck { animation: fadeUp 0.6s 0.1s ease both; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="/">ave-apps</a>
+      <span class="header-note">Velserbroek · Noord-Holland</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-kicker">Zorg &amp; ICT — de synthese</p>
+    <h1>Zorg die werkt,<br><em>software die klopt.</em></h1>
+    <p class="hero-deck">Digitale hulpmiddelen voor zorgteams die geen IT-afdeling hebben — gebouwd door iemand die weet wat er op de werkvloer echt speelt.</p>
+  </section>
+
+  <section>
+    <p class="section-label">De synthese</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">I</div>
+        <h3>24 jaar zorg</h3>
+        <p>Begeleider bij SEIN Epilepsiezorg. Niet als toeschouwer — de overdrachten, de roosters, de documentatielast, de momenten waarop het systeem hapert.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">II</div>
+        <h3>ICT vóór de zorg</h3>
+        <p>Systeem-, netwerk- en applicatiebeheer. Weet hoe software gemaakt wordt, wat het kost, en waarom maatwerk voor kleine teams zelden van de grond komt.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">III</div>
+        <h3>Nu: de combinatie</h3>
+        <p>Kleine apps, werkend vanaf dag één, gebouwd op wat een team écht nodig heeft. Geen facturen voor elke knop.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Wat er al staat</p>
+    <div class="apps-grid">
+      <div class="app-item">
+        <span class="app-name">Vocht &amp; voeding</span>
+        <span class="app-desc">Vochtregistratie met Google Sheets sync</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">Dienstrapportage G5</span>
+        <span class="app-desc">Vroeg/laat overdracht, defecatie, hydratie</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">Digital Twin gebouw</span>
+        <span class="app-desc">3D gebouwmodel met live teamdata</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">Achterwacht-pool</span>
+        <span class="app-desc">Beschikbaarheid, PLB-prognose, incentives</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">Stagiairbeheer</span>
+        <span class="app-desc">Fasen, begeleiders, stagelijnen in DT5</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">Netwerk-globe GNLES</span>
+        <span class="app-desc">Epilepsie &amp; slaap, NL spherische projectie</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">LACCS-planner</span>
+        <span class="app-desc">Trainingsblokken, WIP-bord, seesaw-analyse</span>
+      </div>
+      <div class="app-item">
+        <span class="app-name">Ziekmelding &amp; alarm</span>
+        <span class="app-desc">Protocol-apps voor G5, mobiel-first</span>
+      </div>
+    </div>
+    <p class="apps-note">Alle apps draaien als single-file HTML · geen server · geen login · geen abonnement · hosted op GitHub Pages</p>
+  </section>
+
+  <section class="quote-section">
+    <blockquote>
+      De vraag is niet of kleine zorgteams betere tools verdienen. De vraag is of iemand ze bouwt die weet wat er op de werkvloer gebeurt als het systeem hapert om kwart voor zeven.
+    </blockquote>
+  </section>
+
+  <section>
+    <p class="section-label">Voor wie</p>
+    <div class="voor-wie">
+      <div class="vw-item">
+        <h3>Zelfsturende teams</h3>
+        <p>Geen groot automatiseringsbudget, wel concrete problemen die herhalen. Een aanpak die klein begint en werkt — zonder projectplan van twaalf pagina's.</p>
+      </div>
+      <div class="vw-item">
+        <h3>Zorginnovatoren</h3>
+        <p>Mensen die weten dat het anders kan, maar niet de technische kant willen dragen. De bouw is voor mij, de inhoud is voor jullie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <p class="section-label">Contact</p>
+    <div class="contact-block">
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.511l6 4.8 6-4.8V4H4zm12 2.489-5.4 4.32a1 1 0 0 1-1.2 0L4 6.489V16h12V6.489z"/></svg>
+        </div>
+        <a href="mailto:esveldav@gmail.com">esveldav@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M16 3H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM7.5 15H5V8h2.5v7zm-1.25-8.15a1.45 1.45 0 1 1 0-2.9 1.45 1.45 0 0 1 0 2.9zM15 15h-2.5v-3.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V15H7V8h2.5v1.1A3.48 3.48 0 0 1 12 8c1.93 0 3 1.34 3 3.5V15z"/></svg>
+        </div>
+        <a href="https://linkedin.com/in/esveldav" target="_blank" rel="noopener">linkedin.com/in/esveldav</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 18 10c0-4.42-3.58-8-8-8z"/></svg>
+        </div>
+        <a href="https://ave-apps.github.io" target="_blank" rel="noopener">ave-apps.github.io</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <p>ave-apps · Albert van Esveld · 2026</p>
+      <p>Concept — niet voor extern gebruik</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
