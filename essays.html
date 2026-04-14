@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fysieke grens — Albert van Esveld</title>
+<meta name="description" content="Drie essays over architectuur als privacystrategie. Het kamernummer, het gezicht, de plug.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-muted: #8a8a84;
+    --paper: #f5f3ee;
+    --paper-warm: #ede9e0;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --rule: rgba(26,26,24,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-weight: 400; line-height: 1.6; min-height: 100vh; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ── header ── */
+  header { padding: 2.5rem 0 0; border-bottom: 1px solid var(--rule); }
+  .header-inner { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .logo { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; }
+  .header-back { font-size: 13px; color: var(--accent); text-decoration: none; }
+  .header-back:hover { text-decoration: underline; }
+
+  /* ── hero ── */
+  .hero { padding: 4.5rem 0 3.5rem; border-bottom: 1px solid var(--rule); }
+  .hero-kicker { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(32px, 5.5vw, 52px); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.75rem; }
+  .hero h1 em { font-style: italic; color: var(--ink-mid); }
+  .hero-ondertitel { font-family: var(--serif); font-size: clamp(16px, 2.5vw, 20px); font-style: italic; color: var(--ink-mid); margin-bottom: 1.5rem; font-weight: 400; }
+  .hero-deck { font-size: 16px; color: var(--ink-mid); line-height: 1.75; max-width: 540px; font-weight: 300; }
+
+  /* ── sections ── */
+  section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 2rem; }
+
+  /* ── inleiding ── */
+  .inleiding-tekst { font-size: 16px; color: var(--ink-mid); line-height: 1.8; font-weight: 300; max-width: 600px; }
+  .inleiding-tekst p + p { margin-top: 1rem; }
+  .inleiding-citaat {
+    margin: 2rem 0;
+    font-family: var(--serif);
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--accent);
+    max-width: 520px;
+  }
+
+  /* ── essay kaartjes ── */
+  .essays-lijst { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); }
+  .essay-item { padding: 1.75rem 2rem; border-bottom: 1px solid var(--rule); display: flex; gap: 1.5rem; align-items: flex-start; }
+  .essay-item:last-child { border-bottom: none; }
+  .essay-nr { font-family: var(--serif); font-size: 36px; color: var(--paper-warm); line-height: 1; flex-shrink: 0; width: 36px; user-select: none; }
+  .essay-body { flex: 1; }
+  .essay-titel { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 0.25rem; }
+  .essay-subtitel { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; font-style: italic; }
+  .essay-samenvatting { font-size: 14px; color: var(--ink-mid); line-height: 1.7; font-weight: 300; max-width: 520px; }
+  .essay-principe {
+    margin-top: 1rem; padding: 0.75rem 1rem;
+    background: var(--accent-light);
+    border-left: 2px solid var(--accent);
+    font-size: 13px; color: var(--accent);
+    font-style: italic; line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* ── download ── */
+  .download-sectie { background: var(--paper-warm); margin: 0 -2rem; padding: 2rem 2rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .download-tekst h3 { font-size: 15px; font-weight: 500; margin-bottom: 0.3rem; }
+  .download-tekst p { font-size: 13px; color: var(--ink-mid); font-weight: 300; }
+  .download-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: #fff;
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    padding: 0.6rem 1.25rem; border-radius: 4px;
+    text-decoration: none; transition: opacity 0.15s;
+    flex-shrink: 0;
+  }
+  .download-btn:hover { opacity: 0.85; }
+
+  /* ── actuele noot ── */
+  .noot-sectie { padding: 3rem 0; }
+  .noot-datum { font-size: 11px; color: var(--ink-muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .noot-tekst { font-size: 15px; color: var(--ink-mid); line-height: 1.8; font-weight: 300; max-width: 580px; }
+  .noot-tekst p + p { margin-top: 0.9rem; }
+  .noot-tekst a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(45,90,61,0.3); }
+  .noot-tekst a:hover { border-bottom-color: var(--accent); }
+  .noot-incidenten { margin: 1.25rem 0; padding: 1rem 1.25rem; background: var(--paper-warm); border: 1px solid var(--rule); font-size: 13px; color: var(--ink-mid); line-height: 1.7; }
+  .noot-incidenten strong { color: var(--ink); font-weight: 500; }
+
+  /* ── footer ── */
+  footer { padding: 1.5rem 0; border-top: 1px solid var(--rule); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-inner p { font-size: 11px; color: var(--ink-muted); }
+  .footer-inner a { color: var(--accent); text-decoration: none; font-size: 11px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .hero h1 { animation: fadeUp 0.55s ease both; }
+  .hero-deck { animation: fadeUp 0.55s 0.1s ease both; }
+
+  @media (max-width: 540px) {
+    .essay-item { flex-direction: column; gap: 0.5rem; padding: 1.25rem; }
+    .essay-nr { font-size: 28px; }
+    .download-sectie { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="/">ave-apps</a>
+      <a class="header-back" href="/">← Terug</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-kicker">Essay · Architectuur als privacystrategie</p>
+    <h1>Fysieke grens</h1>
+    <p class="hero-ondertitel">Drie essays over deuren die er niet zijn.</p>
+    <p class="hero-deck">Betere encryptie lost het verkeerde probleem op. Hogere muren evenmin. Er is een oudere, robuustere aanpak — en die begon op een zorgafdeling.</p>
+  </section>
+
+  <!-- Inleiding -->
+  <section>
+    <p class="section-label">Inleiding</p>
+    <div class="inleiding-tekst">
+      <p>Er komt een moment — niet ver weg — waarop de quantumcomputer de encryptie waarop het hedendaagse internet rust, zal breken. Wachtwoorden, certificaten, versleutelde verbindingen: het zijn sloten van een makelij die kwantumrekenkracht in seconden opentrekt. Aanvallers slaan vandaag al versleutelde data op, in afwachting van de dag dat ze de sleutel kunnen maken.</p>
+      <p>De drie essays in dit boekje bieden een antwoord. Niet door betere encryptie. Niet door hogere muren. Maar door een architectuurkeuze die ouder is dan computers en die de quantumcomputer irrelevant maakt voor de beveiligde kern: de fysieke scheiding.</p>
+    </div>
+
+    <div class="inleiding-citaat">
+      Een systeem dat niet verbonden is met het internet, is niet te hacken via het internet. Een gezicht dat nooit als gezicht is opgeslagen, kan niet worden herkend uit een lek.
+    </div>
+
+    <div class="inleiding-tekst">
+      <p>Dit zijn geen noodmaatregelen. Het zijn ontwerpprincipes. Ze ontstonden niet in een laboratorium maar op een zorgafdeling, in de marge van een werkdag, door iemand die apps bouwde met kamernummers omdat hij geen namen durfde op te slaan.</p>
+      <p style="font-style:italic;color:var(--ink)">In der Beschränkung zeigt sich der Meister.</p>
+    </div>
+  </section>
+
+  <!-- De drie essays -->
+  <section>
+    <p class="section-label">De drie essays</p>
+    <div class="essays-lijst">
+
+      <div class="essay-item">
+        <div class="essay-nr">I</div>
+        <div class="essay-body">
+          <div class="essay-titel">De kamer als sleutel</div>
+          <div class="essay-subtitel">Identiteit scheiden van data</div>
+          <p class="essay-samenvatting">In zorgsystemen staat de naam er gewoon in. Als het systeem lekt — hack, menselijke fout, verkeerd doorgestuurde mail — lekt de naam mee. En met de naam lekt alles. De oplossing is simpel in principe: gebruik betekenisloze identifiers als primaire sleutel, bewaar de koppeling naar namen gescheiden, offline, buiten het systeem. Een aanvaller die binnendringt, haalt gecodeerde data op. Zonder de sleutel heeft hij niets.</p>
+          <div class="essay-principe">"Datalekken worden structureel minder schadelijk. Gelekte data is zonder context waardeloos."</div>
+        </div>
+      </div>
+
+      <div class="essay-item">
+        <div class="essay-nr">II</div>
+        <div class="essay-body">
+          <div class="essay-titel">Het gezicht als optie</div>
+          <div class="essay-subtitel">Waarneming scheiden van opslag</div>
+          <p class="essay-samenvatting">Bewakingscamera's slaan standaard alles op. Wat als je de volgorde omdraait? De camera verwerkt frames lokaal, op chipniveau, zonder ze op te slaan. Bewegingsdetectie vergelijkt frames in real time: een val, een epileptische aanval, agitatie — detecteerbaar zonder dat het gezicht ooit in een database terechtkomt. Wat wordt opgeslagen is vervaagd. De sleutel om te ontsleutelen bevindt zich fysiek elders. Ontsleuteling is een bewuste handeling, niet een automatische ontsluiting.</p>
+          <div class="essay-principe">"Anonimiteit als default, identiteit als uitzondering."</div>
+        </div>
+      </div>
+
+      <div class="essay-item">
+        <div class="essay-nr">III</div>
+        <div class="essay-body">
+          <div class="essay-titel">De plug als toegang</div>
+          <div class="essay-subtitel">Verbinding scheiden van aanwezigheid</div>
+          <p class="essay-samenvatting">Een zelfrijdende auto zonder passagier: waarom zou die rijden? Als een systeem alleen actief is wanneer een bevoegde persoon fysiek aanwezig is — en die aanwezigheid wordt hardwarematig vereist, niet softwarematig geverifieerd — dan vervalt een hele categorie aanvalsmogelijkheden. Zonder de plug: het systeem is gesloten. Met de plug: de verbinding bestaat, maar alleen zolang de rechtmatige gebruiker er is. Vertrekt die gebruiker, dan neemt die de verbinding mee. Het principe geldt voor medische apparatuur, industriële besturingssystemen, gebouwbeheer, autonome voertuigen.</p>
+          <div class="essay-principe">"Verbinding is een keuze, geen standaard. Aanwezigheid is authenticatie. Hardware is de sleutel die je niet kunt stelen via het netwerk."</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Download -->
+  <div class="download-sectie">
+    <div class="download-tekst">
+      <h3>Volledig boekje</h3>
+      <p>De drie essays uitgebreid, inclusief coda en DNA-analogie — april 2026</p>
+    </div>
+    <a class="download-btn" href="fysieke-grens.pdf" download>
+      ↓ Download PDF
+    </a>
+  </div>
+
+  <!-- Actuele noot -->
+  <section class="noot-sectie">
+    <p class="section-label">Actuele noot — april 2026</p>
+    <div class="noot-datum">14 april 2026</div>
+    <div class="noot-tekst">
+      <p>De principes in deze essays zijn geen theoretische oefening. In de weken rondom de publicatie werden opnieuw grote Nederlandse organisaties getroffen:</p>
+
+      <div class="noot-incidenten">
+        <strong>Odido</strong> — februari 2026. Gegevens van 6,5 miljoen klantaccounts gelekt, waaronder burgerservicenummers. Social engineering via externe callcenters. De combinatie naam + adres + IBAN + geboortedatum maakt identiteitsfraude mogelijk.<br><br>
+        <strong>Booking.com</strong> — 13 april 2026. Onbevoegden kregen toegang tot boekingsdetails, namen, e-mailadressen, adressen en telefoonnummers van klanten. Omvang nog onbekend.<br><br>
+        <strong>ChipSoft &amp; Basic-Fit</strong> — eveneens april 2026. Vier sectoren, vier systemen, één patroon: beveiliging zit in de toegangslaag. De data zelf is intact, herkenbaar, doorzoekbaar.
+      </div>
+
+      <p>Een systeem gebouwd op de architectuur uit Essay I had structureel minder te lekken gehad. Niet omdat de toegangsbeveiliging beter was — maar omdat de data zelf zonder context waardeloos is.</p>
+
+      <p>Voor wie de actualiteit rondom AI, data en digitale veiligheid nauwlettend en toegankelijk bijhoudt: <a href="https://linkedin.com/in/elisa-meaghan-baas" target="_blank" rel="noopener">Elisa Baas</a> publiceert hierover geregeld informatief en praktijkgericht op LinkedIn.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <p>Albert van Esveld · SEIN Epilepsiezorg · april 2026</p>
+      <a href="/">← ave-apps.github.io</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
