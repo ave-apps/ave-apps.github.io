@@ -256,6 +256,35 @@
   }
   .footer-inner p { font-size: 11px; color: var(--ink-muted); }
 
+  /* ── aan de slag cliffhanger ── */
+  .aandeslag-section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-warm);
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .aandeslag-intro {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+  }
+  .aandeslag-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+  .aandeslag-link:hover { opacity: 0.7; }
+
   /* ── fade in ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
@@ -348,6 +377,13 @@
     </blockquote>
   </section>
 
+  <section class="aandeslag-section">
+    <p class="section-label">G5 — in gebruik</p>
+    <p class="aandeslag-intro">Gebouw 5B van SEIN Epilepsiezorg was het eerste testterrein. Eén afdeling, twaalf bewoners, een handvol begeleiders — en een suite van apps die inmiddels dagelijks meedraaien in de overdracht.</p>
+    <p class="aandeslag-intro" style="margin-top:0.75rem">Van vochtalarm tot 3D gebouwmodel, van stagiairbeheer tot organogram voor de manager — stuk voor stuk gebouwd op wat er op de werkvloer echt speelt.</p>
+    <a class="aandeslag-link" href="aan-de-slag.html">Hoe dat er in de praktijk uitziet&nbsp;&rarr;</a>
+  </section>
+
   <section>
     <p class="section-label">Voor wie</p>
     <div class="voor-wie">
@@ -369,7 +405,7 @@
         <div class="contact-icon">
           <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.511l6 4.8 6-4.8V4H4zm12 2.489-5.4 4.32a1 1 0 0 1-1.2 0L4 6.489V16h12V6.489z"/></svg>
         </div>
-        <a href="mailto:esveldav@gmail.com">esveldav@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#2e4b5d584b424a4f586e49434f4742004d4143"><span class="__cf_email__" data-cfemail="31544247545d55504771565c50585d1f525e5c">[email&#160;protected]</span></a>
       </div>
       <div class="contact-row">
         <div class="contact-icon">
@@ -391,11 +427,4 @@
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <p>ave-apps · Albert van Esveld · 2026</p>
-      <p>Concept — niet voor extern gebruik</p>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+      <p>ave-ap
